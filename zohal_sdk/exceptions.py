@@ -8,3 +8,7 @@ class TimeoutError(Timeout):
 
 class HTTPError(RHTTPError):
     pass
+
+
+class ZohalError(Exception):
+    pass

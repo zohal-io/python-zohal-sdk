@@ -8,6 +8,9 @@ from requests.exceptions import (Timeout, HTTPError as RHTTPError,
 
 from .types import RequestData, ResponseData
 from .types.national_identity import NationalIdentity
+from .types.shahkar import Shahkar
+
+from .models.shahkar import ShahkarRequest
 from .models.national_identity_inquery import NationalIdentityInqueryRequest
 from .exceptions import HTTPError, TimeoutError, ZohalError
 
@@ -73,3 +76,10 @@ class Client:
             data,
             method="POST")
         return ResponseData.serialize(NationalIdentity, response)
+
+    def shahkar(self, national_code: str, mobile: str):
+        data = ShahkarRequest(national_code=national_code, mobile=mobile)
+        response = self._request(f"{BASE_URL}/v0/services/inquiry/shahkar",
+                                 data,
+                                 method="POST")
+        return ResponseData.serialize(Shahkar, response)

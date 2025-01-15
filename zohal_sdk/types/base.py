@@ -1,8 +1,10 @@
-from typing import Protocol, Optional, runtime_checkable, Any
+from typing import Protocol, Optional, runtime_checkable, Any, TypeVar, Generic, ForwardRef
 from enum import Enum
 
 from dataclasses import dataclass
 from dataclasses_json import dataclass_json, CatchAll, Undefined
+
+T = TypeVar("T")
 
 
 @runtime_checkable
@@ -18,7 +20,7 @@ class BaseResponseData(Protocol):
 @dataclass_json(undefined=Undefined.INCLUDE)
 @dataclass
 class ResponseBody:
-    data: Any
+    data: T
     catch: CatchAll
     message: str
     error_code: Optional[dict]
@@ -29,7 +31,7 @@ class ResponseBody:
 
 @dataclass_json
 @dataclass
-class ResponseData:
+class ResponseData(Generic[T]):
     response_body: ResponseBody
     result: int
 

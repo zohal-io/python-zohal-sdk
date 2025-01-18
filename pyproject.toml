@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{ include = "zohal_sdk" }]
 
 [tool.poetry.dependencies]
-python = ">=3.10,<4.0"
+python = ">=3.8,<4.0"
 requests = "^2.32.3"
 dataclasses-json = "^0.6.7"
 

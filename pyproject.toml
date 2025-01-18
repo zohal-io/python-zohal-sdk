@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "zohal-sdk"
-version = "0.1.0"
+version = "0.1.1"
 description = "zohal-sdk is a Python SDK for interfacing with zohal.io."
 authors = ["Alireza Rabie <alireza@aazerra.dev>"]
 readme = "README.md"

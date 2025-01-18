@@ -16,4 +16,4 @@ class NationalIdentity:
     national_code: str
     is_dead: bool
     alive: bool
-    gender: Optional[Gender]
+    gender: Optional[Gender] = None

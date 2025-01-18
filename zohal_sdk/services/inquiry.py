@@ -35,7 +35,7 @@ class InquiryMixin:
             self,
             national_code: str,
             birth_date: str,
-            gender: Optional[bool] = None) -> ResponseData[NationalIdentity]:
+            gender: Optional[bool] = False) -> ResponseData[NationalIdentity]:
         """
         National Identity inquiry service
         inquiry national_code with birth_date to see if its valid or not.

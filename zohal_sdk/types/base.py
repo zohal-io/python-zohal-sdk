@@ -19,7 +19,7 @@ class BaseResponseData(Protocol):
 
 @dataclass_json(undefined=Undefined.INCLUDE)
 @dataclass
-class ResponseBody:
+class ResponseBody(Generic[T]):
     data: T
     catch: CatchAll
     message: str

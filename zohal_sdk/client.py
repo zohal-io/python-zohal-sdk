@@ -1,10 +1,9 @@
 """ Zohal RestAPI Client """
 from typing import Union
-import io
 from .types import RequestData
 import logging
 
-from requests import Session
+from requests import Session, Response
 from requests.exceptions import (Timeout, HTTPError as RHTTPError,
                                  JSONDecodeError)
 
@@ -15,6 +14,12 @@ logger = logging.getLogger(__name__)
 
 
 class Client(InquiryMixin):
+    """
+    Client class for zohal API
+
+    :param token: Token of Zohal API, should be obatined from zohal.io
+    :raises ValueError: if token is not specified
+    """
 
     def __init__(self, token: str):
         if token is None:
@@ -28,7 +33,7 @@ class Client(InquiryMixin):
                 url: str,
                 data: Union[RequestData, dict, None] = None,
                 files=None,
-                method: str = "GET"):
+                method: str = "GET") -> Response:
         logger.debug(f"request to {url=} with {method=}")
         try:
             kwargs = {"url": url, "method": method}
